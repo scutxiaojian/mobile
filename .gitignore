@@ -53,4 +53,5 @@ venv
 reports
 ETLTest.egg-info
 result.txt
+*.json
 
