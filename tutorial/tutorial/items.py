@@ -11,3 +11,8 @@ import scrapy
 class DmozItem(scrapy.Item):
     cost = scrapy.Field()
     house = scrapy.Field()
+    houseName = scrapy.Field()
+    address = scrapy.Field()
+    houseDetail = scrapy.Field()
+    url = scrapy.Field()
+

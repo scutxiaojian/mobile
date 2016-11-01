@@ -20,7 +20,24 @@ class housePipeline(object):
         self.file = codecs.open('house.json', 'wb', encoding='utf-8')
 
     def process_item(self, item, spider):
-        line = json.dumps(dict(item)) + '\n'
-        # print line
-        self.file.write(line.decode("unicode_escape"))
+        result = 1
+        strlist = []
+        temp = dict(item)
+        for (k, v) in temp.items():
+            for t in temp[k]:
+                if k == 'cost':
+                    t = int(t)
+                elif k != 'url':
+                    t = t.replace('\n','').strip().replace(' ','').replace('-','')
+                if t == "":
+                    continue
+                strlist.append(t)
+            temp[k] = strlist
+            strlist = []
+            if temp[k] == []:
+                result = 0
+                break
+        if result==1 :
+            line = json.dumps(temp) + '\n'
+            self.file.write(line.decode("unicode_escape"))
         return item
