@@ -14,5 +14,4 @@ class DmozItem(scrapy.Item):
     houseName = scrapy.Field()
     address = scrapy.Field()
     houseDetail = scrapy.Field()
-    url = scrapy.Field()
 

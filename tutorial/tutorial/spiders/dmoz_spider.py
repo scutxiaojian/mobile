@@ -25,7 +25,6 @@ class DmozSpider(scrapy.Spider):
             for url in urls:
                 yield Request(url, callback=self.parse2, dont_filter=True)
 
-
     def parse2(self,response):
         item = DmozItem()
         item['cost'] = response.xpath('//ul/li[1]/div/i/em/text()').extract()
